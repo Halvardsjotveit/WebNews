@@ -9,7 +9,7 @@ using EPiServer.UI.Admin;
 namespace WebNews.Models.Pages
 {
     [ContentType(DisplayName = "PersonPage", GUID = "079dcc2b-214f-41ee-be64-d14b7230439c", Description = "")]
-    public class PersonPage : PageData
+    public class PersonPage : BasePage
     {
 
 
