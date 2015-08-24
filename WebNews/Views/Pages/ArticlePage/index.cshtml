@@ -1,0 +1,13 @@
+﻿@model WebNews.Models.Pages.ArticlePage
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<h1>
+    @Html.PropertyFor(x => x.Header)
+</h1>
+<p>
+
+    @Model.IntroText
+    @Model.MainBody
+
+</p>

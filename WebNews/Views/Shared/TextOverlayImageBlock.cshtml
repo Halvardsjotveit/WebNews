@@ -1,0 +1,13 @@
+﻿@model WebNews.Models.Blocks.TextOverlayImageBlock
+
+
+<header class="header-box">
+    <div class="top-image">
+        <div><h1>@Model.ImageOverlayText</h1></div>
+        @Html.PropertyFor(x => x.BlockImage)
+    </div>
+
+    <section class="ingress">
+        <p>@Model.UnderImageText</p>
+    </section>
+</header>
