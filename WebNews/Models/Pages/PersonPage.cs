@@ -51,6 +51,7 @@ namespace WebNews.Models.Pages
 
 
         [EmailAddress(ErrorMessage = "Must be valid email address")]
+        [DataType(DataType.EmailAddress)]
         [Display(
             Name = "Email",
             GroupName = SystemTabNames.Content,
@@ -62,6 +63,7 @@ namespace WebNews.Models.Pages
             Name = "Phone Number",
             GroupName = SystemTabNames.Content,
             Order = 9)]
+        [DataType(DataType.PhoneNumber)]
         public virtual string PhoneNumber { get; set; }
 
 
