@@ -5,6 +5,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using EPiServer.UI.Admin;
+using EPiServer.Web;
 
 namespace WebNews.Models.Pages
 {
@@ -49,20 +50,25 @@ namespace WebNews.Models.Pages
         public virtual string City { get; set; }
 
 
-        [RegularExpression(@"^([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,9})$",
-            ErrorMessage = "Must be valid email address")]
+        [EmailAddress(ErrorMessage = "Must be valid email address")]
         [Display(
             Name = "Email",
             GroupName = SystemTabNames.Content,
             Order = 8)]
         public virtual string Email { get; set; }
 
+        [RegularExpression("[0-9]{8}", ErrorMessage = "Must be a valid 8 digit phone number")]
+        [Display(
+            Name = "Phone Number",
+            GroupName = SystemTabNames.Content,
+            Order = 9)]
+        public virtual string PhoneNumber { get; set; }
+
 
         [Display(
-    Name = "Main body",
-    Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
-    GroupName = SystemTabNames.Content,
-    Order = 5)]
-        public virtual XhtmlString MainBody { get; set; }
+               GroupName = SystemTabNames.Content,
+               Order = 10)]
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference PersonImage { get; set; }
     }
 }
