@@ -56,5 +56,13 @@ namespace WebNews.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 8)]
         public virtual string Email { get; set; }
+
+
+        [Display(
+    Name = "Main body",
+    Description = "The main body will be shown in the main content area of the page, using the XHTML-editor you can insert for example text, images and tables.",
+    GroupName = SystemTabNames.Content,
+    Order = 5)]
+        public virtual XhtmlString MainBody { get; set; }
     }
 }

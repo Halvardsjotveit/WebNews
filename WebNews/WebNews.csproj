@@ -240,6 +240,7 @@
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageFileController.cs" />
+    <Compile Include="Controllers\PersonPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -303,6 +304,7 @@
     <Content Include="Views\Shared\ClientLogoBlock.cshtml" />
     <Content Include="Views\Shared\ButtonBlock.cshtml" />
     <Content Include="Views\Pages\ArticlePage\index.cshtml" />
+    <Content Include="Views\Pages\PersonPage\index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

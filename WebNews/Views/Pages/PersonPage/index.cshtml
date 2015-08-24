@@ -3,12 +3,23 @@
 
 
 <h1>
-    @Model.FirstName
-    @Model.LastName
+    @Html.PropertyFor(x => x.Header)
 </h1>
 <p>
-
     @Model.IntroText
-    @Model.MainBody
+
+    <br>
+    <br>
+        @Model.FirstName
+        @Model.LastName
+    <br/>
+    <br>
+        @Model.Street
+    <br>
+        @Model.PostalCode
+    <br>
+        @Model.City
+    <br/>
+        @Model.Email
 
 </p>
