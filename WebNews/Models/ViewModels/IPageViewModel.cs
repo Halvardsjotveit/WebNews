@@ -16,5 +16,6 @@ namespace WebNews.Models.ViewModels
         T CurrentPage { get; }
         XhtmlString FooterText { get; set; }
         List<PageData> MenuPages { get; set; }
+        List<PageData> BreadCrumbs { get; set; }
     }
 }

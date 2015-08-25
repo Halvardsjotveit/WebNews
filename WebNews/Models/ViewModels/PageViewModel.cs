@@ -20,6 +20,7 @@ namespace WebNews.Models.ViewModels
         public T CurrentPage { get; private set; }
         public List<PageData> MenuPages { get; set; }
         public IContentLoader ServiceLocator { get; set; }
+        public List<PageData> BreadCrumbs { get; set; }
 
 
         public PageViewModel(T currentPage)
@@ -45,6 +46,12 @@ namespace WebNews.Models.ViewModels
             var children = ServiceLocator.GetChildren<BasePage>(ContentReference.StartPage).ToList();
 
             return children.FilterForVisitorAndMenu().ToList();
+        }
+
+        private List<PageData> GetParents(T currentPage)
+        {
+            var parents = ServiceLocator.GetAncestors(currentPage.ContentLink).ToList();
+            return null;
         }
 
 
