@@ -237,11 +237,13 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Business\Rendring\CustomViewEngine.cs" />
+    <Compile Include="Business\UIDescriptors\FolderPageUIDescriptors.cs" />
     <Compile Include="Controllers\ArticlePageController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageFileController.cs" />
     <Compile Include="Controllers\ListPageController.cs" />
     <Compile Include="Controllers\PersonPageController.cs" />
+    <Compile Include="Controllers\PortalPageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -258,13 +260,15 @@
     <Compile Include="Models\Pages\HomePage.cs" />
     <Compile Include="Models\Pages\ListPage.cs" />
     <Compile Include="Models\Pages\PersonPage.cs" />
+    <Compile Include="Models\Pages\PortalPage.cs" />
+    <Compile Include="Models\ViewModels\IPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ListPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ImageViewModel.cs" />
+    <Compile Include="Models\ViewModels\PageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Properties\" />
-    <Folder Include="Views\Blocks\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Static\css\app.css" />
@@ -272,6 +276,7 @@
     <Content Include="Static\css\bootstrap-theme.min.css" />
     <Content Include="Static\css\bootstrap.css" />
     <Content Include="Static\css\bootstrap.min.css" />
+    <Content Include="Static\css\jumbotron-narrow.css" />
     <Content Include="Static\css\navbar-fixed-top.css" />
     <Content Include="Static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Static\js\bootstrap.js" />
@@ -300,15 +305,17 @@
     <Content Include="Static\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Partials\Menu.cshtml" />
-    <Content Include="Views\Shared\TextOverlayImageBlock.cshtml" />
-    <Content Include="Views\Shared\ImageBlock.cshtml" />
-    <Content Include="Views\Shared\TextBlock.cshtml" />
-    <Content Include="Views\Shared\MiniTextBlock.cshtml" />
-    <Content Include="Views\Shared\ClientLogoBlock.cshtml" />
-    <Content Include="Views\Shared\ButtonBlock.cshtml" />
+    <Content Include="Views\Blocks\TextOverlayImageBlock\TextOverlayImageBlock.cshtml" />
+    <Content Include="Views\Blocks\ImageBlock\index.cshtml" />
+    <Content Include="Views\Blocks\TextBlock\index.cshtml" />
+    <Content Include="Views\Blocks\MiniTextBlock\index.cshtml" />
+    <Content Include="Views\Blocks\ClientLogoBlock\index.cshtml" />
+    <Content Include="Views\Blocks\ButtonBlock\index.cshtml" />
     <Content Include="Views\Pages\ArticlePage\index.cshtml" />
     <Content Include="Views\Pages\PersonPage\index.cshtml" />
     <Content Include="Views\Pages\ListPage\index.cshtml" />
+    <Content Include="Views\Pages\PortalPage\index.cshtml" />
+    <Content Include="Views\Shared\Partials\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

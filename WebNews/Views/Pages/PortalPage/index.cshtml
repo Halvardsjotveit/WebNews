@@ -1,13 +1,10 @@
-﻿@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.ArticlePage>
+﻿@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.PortalPage>
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
-
 
 <h1>
     @Html.PropertyFor(x => x.CurrentPage.PageName)
 </h1>
 <p>
-
     @Html.PropertyFor(x => x.CurrentPage.IntroText)
-    @Html.PropertyFor(x => x.CurrentPage.MainBody)
-
+    @Html.PropertyFor(x => x.CurrentPage.MainContentArea)
 </p>

@@ -10,21 +10,16 @@ using WebNews.Models.ViewModels;
 
 namespace WebNews.Controllers
 {
-    public class ListPageController : PageController<ListPage>
+    public class PortalPageController : PageController<PortalPage>
     {
-        public ActionResult Index(ListPage currentPage)
+        public ActionResult Index(PortalPage currentPage)
         {
             /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
 
-            var model = new ListPageViewModel(currentPage);
-
-            // Finding the lost childrenses
-            var serviceLocator = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.IContentLoader>();
-            model.ChildPages = serviceLocator.GetChildren<BasePage>(currentPage.ContentLink).ToList();
+            var model = PageViewModel.Create(currentPage);
 
             return View(model);
         }
-
     }
 }

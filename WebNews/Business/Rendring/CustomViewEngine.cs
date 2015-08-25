@@ -12,7 +12,8 @@ namespace WebNews.Business.Rendring
         {
             var viewLocations = new[] {
             "~/Views/Pages/{1}/{0}.cshtml",
-            "~/Views/{1}/{0}.cshtml"
+            "~/Views/{1}/{0}.cshtml",
+            "~/Views/Blocks/{0}/index.cshtml"
         };
 
             this.PartialViewLocationFormats = viewLocations;

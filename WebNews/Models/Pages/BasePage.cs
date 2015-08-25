@@ -12,13 +12,6 @@ namespace WebNews.Models.Pages
     public abstract class BasePage : PageData
     {
         [Display(
-        Name = "Header",
-        GroupName = SystemTabNames.Content,
-        Order = 1)]
-        public virtual string Header { get; set; }
-
-
-        [Display(
         Name = "IntroText",
         GroupName = SystemTabNames.Content,
         Order = 2)]

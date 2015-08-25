@@ -1,31 +1,31 @@
-﻿@model WebNews.Models.Pages.PersonPage
+﻿@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.PersonPage>
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 
 <h1>
-    @Html.PropertyFor(x => x.Header)
+    @Html.PropertyFor(x => x.CurrentPage.PageName)
 </h1>
 <p>
-    @Model.IntroText
+    @Html.PropertyFor(x => x.CurrentPage.IntroText)
 
     <br>
     <br>
-        @Model.FirstName
-        @Model.LastName
+        @Html.PropertyFor(x => x.CurrentPage.FirstName)
+        @Html.PropertyFor(x => x.CurrentPage.LastName)
     <br/>
     <br>
-        @Model.Street
+        @Html.PropertyFor(x => x.CurrentPage.Street)
     <br>
-        @Model.PostalCode
+       @Html.PropertyFor(x => x.CurrentPage.PostalCode)
     <br>
-        @Model.City
+        @Html.PropertyFor(x => x.CurrentPage.City)
     <br/>
-        @Model.Email
+        @Html.PropertyFor(x => x.CurrentPage.Email)
     <br>
-    @Model.PhoneNumber
+    @Html.PropertyFor(x => x.CurrentPage.PhoneNumber)
 
     <div class="image-box">
-        @Html.PropertyFor(x => x.PersonImage)
+        @Html.PropertyFor(x => x.CurrentPage.PersonImage)
     </div>
 
 </p>
