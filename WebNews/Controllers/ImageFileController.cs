@@ -17,6 +17,10 @@ namespace WebNews.Controllers
         {
             _urlResolver = urlResolver;
         }
+        public ImageFileController()
+        { 
+            _urlResolver = UrlResolver.Current;
+        }
 
         /// <summary>
         /// The index action for the image file. Creates the view model and renders the view.

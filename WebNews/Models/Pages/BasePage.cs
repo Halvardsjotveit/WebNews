@@ -8,8 +8,7 @@ using EPiServer.Web;
 
 namespace WebNews.Models.Pages
 {
-    [ContentType(DisplayName = "BasePage", GUID = "e4e89d52-74a6-49b7-a03a-81aa42e5dd21", Description = "")]
-    public abstract class BasePage : PageData
+    public class BasePage : PageData
     {
         [Display(
         Name = "IntroText",

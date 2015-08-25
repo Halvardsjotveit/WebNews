@@ -58,7 +58,7 @@ namespace WebNews.Models.Pages
             Order = 8)]
         public virtual string Email { get; set; }
 
-        [RegularExpression("[0-9]{8}", ErrorMessage = "Must be a valid 8 digit phone number")]
+       [RegularExpression("[0-9]{8}", ErrorMessage = "Must be a valid 8 digit phone number")]
         [Display(
             Name = "Phone Number",
             GroupName = SystemTabNames.Content,

@@ -1,4 +1,5 @@
-﻿using EPiServer.Core;
+﻿using System.Collections.Generic;
+using EPiServer.Core;
 using WebNews.Models.Pages;
 
 namespace WebNews.Models.ViewModels
@@ -14,5 +15,6 @@ namespace WebNews.Models.ViewModels
     {
         T CurrentPage { get; }
         XhtmlString FooterText { get; set; }
+        List<PageData> MenuPages { get; set; }
     }
 }

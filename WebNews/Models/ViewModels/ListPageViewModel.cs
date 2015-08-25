@@ -14,6 +14,6 @@ namespace WebNews.Models.ViewModels
             : base (currentPage)
         { }
    
-        public List<BasePage> ChildPages { get; set; }
+        public List<PageData> ChildPages { get; set; }
     }
 }

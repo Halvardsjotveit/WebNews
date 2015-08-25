@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
+using EPiServer.Filters;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
 using WebNews.Models.Pages;
 using WebNews.Models.ViewModels;
+using WebNews.Utils;
 
 namespace WebNews.Controllers
 {
@@ -14,17 +17,15 @@ namespace WebNews.Controllers
     {
         public ActionResult Index(ListPage currentPage)
         {
-            /* Implementation of action. You can create your own view model class that you pass to the view or
-             * you can pass the page type for simpler templates */
-
             var model = new ListPageViewModel(currentPage);
 
-            // Finding the lost childrenses
             var serviceLocator = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.IContentLoader>();
-            model.ChildPages = serviceLocator.GetChildren<BasePage>(currentPage.ContentLink).ToList();
+            var children = serviceLocator.GetChildren<BasePage>(currentPage.ContentLink).ToList();
+            model.ChildPages = children.FilterForVisitorAndMenu().ToList();
 
             return View(model);
         }
+
 
     }
 }
