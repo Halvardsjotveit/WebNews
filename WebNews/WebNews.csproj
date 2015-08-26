@@ -253,6 +253,7 @@
     <Compile Include="Models\Blocks\ImageBlock.cs" />
     <Compile Include="Models\Blocks\MiniTextBlock.cs" />
     <Compile Include="Models\Blocks\TextBlock.cs" />
+    <Compile Include="Models\Interfaces\IFooterPage.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\BaseEditorialPage.cs" />

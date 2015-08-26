@@ -29,13 +29,20 @@ namespace WebNews.Utils
 
             filterdPages = FilterForVisitor.Filter(filterdPages)
                 .Select(page => page)
-                //.Where(page => page as PageData != null)
                 .Cast<PageData>();
 
             return filterdPages;
         }
 
-        public static List<PageData> GetParentPagesOfType<T>(this PageData currentPage) where T : PageData
+
+        public enum ParentSortOrder
+        {
+            BottomUp = 0,
+            TopDown = 1
+        };
+
+        public static List<PageData> GetParentPagesOfType<T>(this PageData currentPage,
+            ParentSortOrder order = ParentSortOrder.TopDown) where T : PageData
         {
             var serviceLocator = ServiceLocator.Current.GetInstance<IContentLoader>();
 
@@ -43,7 +50,10 @@ namespace WebNews.Utils
                                         .Cast<PageData>()
                                         .Where(x => x is T)
                                         .ToList();
-            parents.Reverse();
+
+            if (order == ParentSortOrder.TopDown)
+                parents.Reverse();
+
             return parents;
         }
 

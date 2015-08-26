@@ -3,7 +3,9 @@
 
 <footer class="footer">
 
-    @{
+    @Html.PropertyFor(x => x.FooterText)
+
+    @*@{
         if (Model.IsPortalPageFooter)
         {
             @Html.PropertyFor(x => x.PortalPageReference.CustomFooterText)
@@ -12,7 +14,7 @@
         {
             @Model.FooterText
         }
-    }
-  
+    }*@
+
 
 </footer>

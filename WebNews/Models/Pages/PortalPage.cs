@@ -4,11 +4,12 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using WebNews.Models.Interfaces;
 
 namespace WebNews.Models.Pages
 {
     [ContentType(DisplayName = "PortalPage", GUID = "314f4bea-f001-4dbc-84f1-01706a397a29", Description = "")]
-    public class PortalPage : BasePage
+    public class PortalPage : BasePage, IFooterPage
     {
 
         [Display(
@@ -23,6 +24,6 @@ namespace WebNews.Models.Pages
             Name = "Custom Footer Text",
             GroupName = SystemTabNames.Content,
             Order = 5)]
-        public virtual XhtmlString CustomFooterText { get; set; }
+        public virtual XhtmlString EditableFooterText { get; set; }
     }
 }

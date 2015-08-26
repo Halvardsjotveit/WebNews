@@ -4,11 +4,12 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
+using WebNews.Models.Interfaces;
 
 namespace WebNews.Models.Pages
 {
     [ContentType(DisplayName = "HomePage", GUID = "A6872269-0173-4489-8640-190A564B65CB", Description = "")]
-    public class HomePage : BasePage
+    public class HomePage : BasePage, IFooterPage
     {
 
         [Display(
@@ -22,6 +23,6 @@ namespace WebNews.Models.Pages
           Name = "Footer",
           GroupName = SystemTabNames.Content,
           Order = 4)]
-        public virtual XhtmlString FooterText { get; set; }
+        public virtual XhtmlString EditableFooterText { get; set; }
     }
 }

@@ -7,9 +7,11 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.Web;
 using NuGet;
+using WebNews.Models.Interfaces;
 using WebNews.Models.ViewModels;
 using WebNews.Models.Pages;
 using WebNews.Utils;
+using PageDataExtensions = WebNews.Utils.PageDataExtensions;
 
 
 namespace WebNews.Models.ViewModels
@@ -32,7 +34,7 @@ namespace WebNews.Models.ViewModels
             ServiceLocator = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentLoader>();
             CurrentPage = currentPage;
 
-            FooterText = GetFooterText();
+            FooterText = GetFooterText(currentPage);
             MenuPages = GetChildrenses();
             BreadCrumbs = currentPage.GetParentPagesOfType<BasePage>()
                                      .FilterForVisitorAndMenu()
@@ -41,42 +43,24 @@ namespace WebNews.Models.ViewModels
 
         }
 
-        private XhtmlString GetFooterText()
+        private XhtmlString GetFooterText(T currentPage)
         {
 
-            var portalPages = CurrentPage.GetParentPagesOfType<PortalPage>()
-                                     .FilterForVisitorAndMenu()
-                                     .Cast<PortalPage>()
-                                     .ToList();
 
-            // Adding current page to list if current is portalpage
-            if (CurrentPage is PortalPage)
-            {
-                var currentPortalPage = CurrentPage as PortalPage;
-                portalPages.Add(currentPortalPage);
-            }
+            var currentIFooterPage = currentPage as IFooterPage;
+            if (currentIFooterPage != null && currentIFooterPage.EditableFooterText != null)
+                return currentIFooterPage.EditableFooterText;
 
-            portalPages.Reverse();
+            var footerPages = currentPage.GetParentPagesOfType<BasePage>(PageDataExtensions.ParentSortOrder.BottomUp)
+                                         .Where(x => x is IFooterPage)
+                                         .FilterForVisitorAndMenu()
+                                         .Cast<IFooterPage>();
 
-            foreach (var page in portalPages)
-            {
-                if (page.CustomFooterText != null)
-                {
-                    /* Current page has custom footer text. Setting values
-                       to check if enabling OnPage editing  of footer text
-                       in footer partial */
-                    if (page.PageLink.ID == CurrentPage.PageLink.ID)
-                    {
-                        IsPortalPageFooter = true;
-                        PortalPageReference = page;
-                    }
-                    return page.CustomFooterText;
-                }
+            var parentFooterPage = footerPages.FirstOrDefault(page => page.EditableFooterText != null);
 
-            }
-
-            var startPage = ServiceLocator.Get<HomePage>(ContentReference.StartPage);
-            return startPage.FooterText;
+            return (parentFooterPage != null)
+                ? parentFooterPage.EditableFooterText
+                : null;
         }
 
 
