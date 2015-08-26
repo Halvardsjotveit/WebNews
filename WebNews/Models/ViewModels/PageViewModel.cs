@@ -10,6 +10,7 @@ using WebNews.Models.ViewModels;
 using WebNews.Models.Pages;
 using WebNews.Utils;
 
+
 namespace WebNews.Models.ViewModels
 {
     public class PageViewModel<T> : IPageViewModel<T> where T : BasePage
@@ -30,7 +31,10 @@ namespace WebNews.Models.ViewModels
 
             FooterText = GetFooterText();
             MenuPages = GetChildrenses();
-            BreadCrumbs = GetParents(currentPage);
+            BreadCrumbs = currentPage.GetParentPagesOfType<BasePage>()
+                                     .FilterForVisitorAndMenu()
+                                     .ToList();
+
 
         }
 
@@ -49,19 +53,6 @@ namespace WebNews.Models.ViewModels
 
             return children.FilterForVisitorAndMenu().ToList();
         }
-
-        private List<PageData> GetParents(BasePage currentPage)
-        {
-            var parents = ServiceLocator.GetAncestors(currentPage.ContentLink)
-                                        .Cast<PageData>()
-                                        .Where(x => x is BasePage)
-                                        .ToList();
-
-            parents.Reverse();
-
-            return parents;
-        }
-
 
     }
 
