@@ -6,6 +6,7 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.Web;
+using NuGet;
 using WebNews.Models.ViewModels;
 using WebNews.Models.Pages;
 using WebNews.Utils;
@@ -41,8 +42,28 @@ namespace WebNews.Models.ViewModels
         private XhtmlString GetFooterText()
         {
 
-            var startPage = ServiceLocator.Get<HomePage>(ContentReference.StartPage);
+            if (CurrentPage is PortalPage)
+            {
+                var currentPortalPage = CurrentPage as PortalPage;
+                if (currentPortalPage.CustomFooterText != null)
+                    return currentPortalPage.CustomFooterText;
+            }
 
+            var parents = CurrentPage.GetParentPagesOfType<PortalPage>()
+                                     .FilterForVisitorAndMenu()
+                                     .Cast<PortalPage>()
+                                     .ToList();
+
+
+            parents.Reverse();
+
+            foreach (var portalPage in parents)
+            {
+                if (portalPage.CustomFooterText != null)
+                    return portalPage.CustomFooterText;
+            }
+
+            var startPage = ServiceLocator.Get<HomePage>(ContentReference.StartPage);
             return startPage.FooterText;
         }
 

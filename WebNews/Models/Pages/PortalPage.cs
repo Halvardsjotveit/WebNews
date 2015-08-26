@@ -17,5 +17,12 @@ namespace WebNews.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 3)]
         public virtual ContentArea MainContentArea { get; set; }
+
+
+        [Display(
+            Name = "Custom Footer Text",
+            GroupName = SystemTabNames.Content,
+            Order = 5)]
+        public virtual XhtmlString CustomFooterText { get; set; }
     }
 }
