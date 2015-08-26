@@ -319,6 +319,7 @@
     <Content Include="Views\Pages\PortalPage\index.cshtml" />
     <Content Include="Views\Shared\Partials\Footer.cshtml" />
     <Content Include="Views\Media\ImageFile.cshtml" />
+    <Content Include="Views\Shared\Partials\BreadCrumbs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

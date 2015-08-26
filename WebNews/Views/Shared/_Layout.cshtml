@@ -23,7 +23,17 @@
 </head>
 <body>
 <div class="container">
+   
+
     @Html.Partial("~/Views/Shared/Partials/Menu.cshtml", Model)
+    @Html.Partial("~/Views/Shared/Partials/BreadCrumbs.cshtml", Model)
+
+    <h1>@Html.PropertyFor(x => x.CurrentPage.PageName)</h1>
+    <p>
+        @Model.CurrentPage.Created.ToString("dd/mm/yyyy")
+        @Model.CurrentPage.CreatedBy
+    </p>
+
     @RenderBody()
     @Html.Partial("~/Views/Shared/Partials/Footer.cshtml", Model)
 </div>

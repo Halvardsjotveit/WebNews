@@ -30,6 +30,8 @@ namespace WebNews.Models.ViewModels
 
             FooterText = GetFooterText();
             MenuPages = GetChildrenses();
+            BreadCrumbs = GetParents(currentPage);
+
         }
 
         private XhtmlString GetFooterText()
@@ -48,10 +50,16 @@ namespace WebNews.Models.ViewModels
             return children.FilterForVisitorAndMenu().ToList();
         }
 
-        private List<PageData> GetParents(T currentPage)
+        private List<PageData> GetParents(BasePage currentPage)
         {
-            var parents = ServiceLocator.GetAncestors(currentPage.ContentLink).ToList();
-            return null;
+            var parents = ServiceLocator.GetAncestors(currentPage.ContentLink)
+                                        .Cast<PageData>()
+                                        .Where(x => x is BasePage)
+                                        .ToList();
+
+            parents.Reverse();
+
+            return parents;
         }
 
 

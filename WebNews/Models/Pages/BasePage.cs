@@ -21,9 +21,7 @@ namespace WebNews.Models.Pages
         public override void SetDefaultValues(ContentType contentType)
         {
             base.SetDefaultValues(contentType);
-            this.VisibleInMenu = true; 
+            this.VisibleInMenu = true;
         }
-
-
     }
 }

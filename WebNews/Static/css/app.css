@@ -415,4 +415,12 @@ html {
     margin-top: 1em;
 }
 
+#breadcrumbs ul{
+    list-style: none;
+}
+
+#breadcrumbs li {
+    display: inline;
+}
+
 /*# sourceMappingURL=app.css.map */

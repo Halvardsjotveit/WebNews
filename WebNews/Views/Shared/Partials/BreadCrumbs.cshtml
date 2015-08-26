@@ -1,0 +1,20 @@
+﻿@using EPiServer.Core
+@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.BasePage>
+<div id="breadcrumbs">
+    <ul>
+        @foreach (var parent in Model.BreadCrumbs)
+        {
+            if (!(PageReference.StartPage.ID == parent.PageLink.ID))
+                {
+                <li>
+                    ->
+                </li>
+            }
+
+            <li>
+                @Html.ContentLink(parent)
+            </li>
+        }
+    </ul>
+</div>
+
