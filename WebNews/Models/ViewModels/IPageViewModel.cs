@@ -17,5 +17,7 @@ namespace WebNews.Models.ViewModels
         XhtmlString FooterText { get; set; }
         List<PageData> MenuPages { get; set; }
         List<PageData> BreadCrumbs { get; set; }
+        bool IsPortalPageFooter { get; set; }
+        PortalPage PortalPageReference { get; set; }
     }
 }

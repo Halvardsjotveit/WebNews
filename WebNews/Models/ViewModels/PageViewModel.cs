@@ -23,6 +23,8 @@ namespace WebNews.Models.ViewModels
         public List<PageData> MenuPages { get; set; }
         public IContentLoader ServiceLocator { get; set; }
         public List<PageData> BreadCrumbs { get; set; }
+        public bool IsPortalPageFooter { get; set; }
+        public PortalPage PortalPageReference { get; set; }
 
 
         public PageViewModel(T currentPage)
@@ -59,7 +61,18 @@ namespace WebNews.Models.ViewModels
             foreach (var page in portalPages)
             {
                 if (page.CustomFooterText != null)
+                {
+                    /* Current page has custom footer text. Setting values
+                       to check if enabling OnPage editing  of footer text
+                       in footer partial */
+                    if (page.PageLink.ID == CurrentPage.PageLink.ID)
+                    {
+                        IsPortalPageFooter = true;
+                        PortalPageReference = page;
+                    }
                     return page.CustomFooterText;
+                }
+
             }
 
             var startPage = ServiceLocator.Get<HomePage>(ContentReference.StartPage);

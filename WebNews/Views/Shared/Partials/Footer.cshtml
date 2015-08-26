@@ -1,5 +1,18 @@
-﻿@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.BasePage>
+﻿@using WebNews.Models.Pages
+@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.BasePage>
 
 <footer class="footer">
-    @Model.FooterText
+
+    @{
+        if (Model.IsPortalPageFooter)
+        {
+            @Html.PropertyFor(x => x.PortalPageReference.CustomFooterText)
+        }
+        else
+        {
+            @Model.FooterText
+        }
+    }
+  
+
 </footer>
