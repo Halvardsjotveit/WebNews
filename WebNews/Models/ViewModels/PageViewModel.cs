@@ -42,25 +42,24 @@ namespace WebNews.Models.ViewModels
         private XhtmlString GetFooterText()
         {
 
-            if (CurrentPage is PortalPage)
-            {
-                var currentPortalPage = CurrentPage as PortalPage;
-                if (currentPortalPage.CustomFooterText != null)
-                    return currentPortalPage.CustomFooterText;
-            }
-
-            var parents = CurrentPage.GetParentPagesOfType<PortalPage>()
+            var portalPages = CurrentPage.GetParentPagesOfType<PortalPage>()
                                      .FilterForVisitorAndMenu()
                                      .Cast<PortalPage>()
                                      .ToList();
 
-
-            parents.Reverse();
-
-            foreach (var portalPage in parents)
+            // Adding current page to list if current is portalpage
+            if (CurrentPage is PortalPage)
             {
-                if (portalPage.CustomFooterText != null)
-                    return portalPage.CustomFooterText;
+                var currentPortalPage = CurrentPage as PortalPage;
+                portalPages.Add(currentPortalPage);
+            }
+
+            portalPages.Reverse();
+
+            foreach (var page in portalPages)
+            {
+                if (page.CustomFooterText != null)
+                    return page.CustomFooterText;
             }
 
             var startPage = ServiceLocator.Get<HomePage>(ContentReference.StartPage);
