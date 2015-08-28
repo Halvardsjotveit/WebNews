@@ -1,17 +1,19 @@
 ﻿@model WebNews.Models.ViewModels.ListPageViewModel
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<div>
+<section>
+    <div>
 
-    @Html.PropertyFor(x => x.CurrentPage.IntroText)
+        @Html.PropertyFor(x => x.CurrentPage.IntroText)
 
-    @Html.PropertyFor(x => x.CurrentPage.MainBody)
-    <ul>
-        @foreach (var page in Model.ChildPages)
-        {
-            <li>
-                @Html.ContentLink(page)
-            </li>
-        }
-    </ul>
-</div>
+        @Html.PropertyFor(x => x.CurrentPage.MainBody)
+        <ul>
+            @foreach (var page in Model.ChildPages)
+            {
+                <li>
+                    @Html.ContentLink(page)
+                </li>
+            }
+        </ul>
+    </div>
+</section>

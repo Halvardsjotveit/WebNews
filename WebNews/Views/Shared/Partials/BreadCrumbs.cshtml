@@ -1,26 +1,40 @@
 ﻿@using EPiServer.Core
 @using NuGet
 @model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.BasePage>
-<div id="breadcrumbs">
-    <ul>
-        @foreach (var parent in Model.BreadCrumbs)
-        {
-            if (ContentReference.StartPage.ID != parent.PageLink.ID)
+
+<style>
+    body {
+        font-family: Verdana, sans-serif;
+        font-size: 1.0em;
+    }
+
+    section, article {
+        border: 1px solid grey;
+        margin: 5px;
+        padding: 8px;
+    }
+</style>
+<section>
+    <div id="breadcrumbs">
+        <ul>
+                @foreach (var parent in Model.BreadCrumbs)
             {
-                <li>-></li>
-            }
+                if (ContentReference.StartPage.ID != parent.PageLink.ID)
+                {
+                        <li>-></li>
+                    }
 
-            <li>
-                @Html.ContentLink(parent)
-            </li>
-        }
+                    <li>
+                        @Html.ContentLink(parent)
+                    </li>
+                }
 
-        @if (!Model.BreadCrumbs.IsEmpty())
-        {
-            <li>-></li>
-        }
+                @if (!Model.BreadCrumbs.IsEmpty())
+            {
+                    <li>-></li>
+                }
 
-        <li>@Model.CurrentPage.PageName</li>
-    </ul>
-</div>
-
+                <li>@Model.CurrentPage.PageName</li>
+        </ul>
+    </div>
+</section>

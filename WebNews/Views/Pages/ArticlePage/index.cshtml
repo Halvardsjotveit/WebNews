@@ -1,9 +1,11 @@
 ﻿@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.ArticlePage>
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<p>
+<section>
+    <p>
+        <i> @Html.PropertyFor(x => x.CurrentPage.IntroText)</i>
 
-    @Html.PropertyFor(x => x.CurrentPage.IntroText)
+    </p>
     @Html.PropertyFor(x => x.CurrentPage.MainBody)
 
-</p>
+</section>

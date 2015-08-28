@@ -6,25 +6,26 @@
 
 @Html.FullRefreshPropertiesMetaData()
 
-<p>
-    @Html.PropertyFor(x => x.CurrentPage.EventText)
-</p>
+<section>
+    <p>
+        @Html.PropertyFor(x => x.CurrentPage.EventText)
+    </p>
 
-<i>Event Start Time: </i>
-@*@Html.PropertyFor(x => x.CurrentPage.StartTime)*@
-@Model.StartTime
-<br />
+    <i>Event Start Time: </i>
+    @*@Html.PropertyFor(x => x.CurrentPage.StartTime)*@
+    @Model.StartTime
+    <br />
 
-@if (Model.EndTime.IsNotNullOrEmpty())
-{
-    <i>Event End Time: </i>
-}
-@Model.EndTime
-<br />
-
+    @if (Model.EndTime.IsNotNullOrEmpty())
+    {
+        <i>Event End Time: </i>
+    }
+    @Model.EndTime
+    <br />
+</section>
 @if (@Model.CurrentPage.Coordinates.IsNotNullOrEmpty())
 {
-    <div id="map" style="height: 380px"></div>
+    <div id="map" style="height: 300px; width: 500px; margin: 0 auto"></div>
     <script type="text/javascript">
 
         var map;
@@ -49,15 +50,16 @@
 
     </script>
 }
-
-<br/>
+<section>
+    <br />
 
     @if (Model.CurrentPage.EventPerson != null)
     {
-        <h2>Event Contact Person:</h2>
+        <h4>Event Contact Person:</h4>
     }
-    <div @Html.EditAttributes(m => m.CurrentPage.EventPerson)>
+    <div @Html.EditAttributes(m => m.CurrentPage.EventPerson) style="position:relative">
         <p>@Html.PropertyFor(x => x.CurrentPage.EventPerson)</p>
         <p>@Model.PhoneNumber</p>
         <p>@Model.Email</p>
     </div>
+</section>

@@ -1,27 +1,31 @@
 ﻿@model WebNews.Models.ViewModels.IPageViewModel<WebNews.Models.Pages.PersonPage>
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-<p>
-    @Html.PropertyFor(x => x.CurrentPage.IntroText)
-
-    <br>
-    <br>
-        @Html.PropertyFor(x => x.CurrentPage.FirstName)
-        @Html.PropertyFor(x => x.CurrentPage.LastName)
-    <br/>
-    <br>
-        @Html.PropertyFor(x => x.CurrentPage.Street)
-    <br>
-       @Html.PropertyFor(x => x.CurrentPage.PostalCode)
-    <br>
-        @Html.PropertyFor(x => x.CurrentPage.City)
-    <br/>
-        @Html.PropertyFor(x => x.CurrentPage.Email)
-    <br>
-    @Html.PropertyFor(x => x.CurrentPage.PhoneNumber)
-
-    <div class="image-box">
+<section>
+    <div class="image-box" style="right: 0;bottom:0">
         @Html.PropertyFor(x => x.CurrentPage.PersonImage)
     </div>
+    <p>
+        @Html.PropertyFor(x => x.CurrentPage.IntroText)
+    </p>
 
-</p>
+    <p>
+        @Html.PropertyFor(x => x.CurrentPage.FirstName)
+        @Html.PropertyFor(x => x.CurrentPage.LastName)
+    </p>
+
+    <p>
+        @Html.PropertyFor(x => x.CurrentPage.Street)
+        <br/>
+        @Html.PropertyFor(x => x.CurrentPage.PostalCode)
+
+        @Html.PropertyFor(x => x.CurrentPage.City)
+    </p>
+
+    <p>
+        @Html.PropertyFor(x => x.CurrentPage.Email)
+        <br/>
+        @Html.PropertyFor(x => x.CurrentPage.PhoneNumber)
+    </p>
+
+</section>
