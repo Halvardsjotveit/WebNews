@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EPiServer.Core;
 
 namespace WebNews.Plugins.Admin
 {
@@ -7,7 +8,7 @@ namespace WebNews.Plugins.Admin
         public int Type { get; set; }
         public string PageName { get; set; }
         public string IntroText { get; set; }
-        public string MainBodyText { get; set; }
+        public XhtmlString MainBodyText { get; set; }
         public List<PageObject> Children { get; set; }
 
         public PageObject()

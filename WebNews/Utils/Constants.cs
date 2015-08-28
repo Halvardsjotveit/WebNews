@@ -14,7 +14,7 @@ namespace WebNews.Utils
 
         public static class FileLocations
         {
-            public const string JsonFileLocation = @"C:\dev\WebNews\Json Data\simple_object_nochildren.json";
+            public const string JsonFileLocation = @"C:\dev\WebNews\Json Data\data.json";
         }
     }
 }
