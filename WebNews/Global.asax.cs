@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using EPiServer;
 using EPiServer.Core;
 using WebNews.Business.Rendring;
+using WebNews.Models.Pages;
+using WebNews.Utils.Extensions;
 
 namespace WebNews
 {
@@ -46,7 +48,21 @@ namespace WebNews
 
         private void OnPublishedContent(object sender, ContentEventArgs e)
         {
+            SetEventPageCoordinatesInDB(e);
             LogInfo("PublishedContent", e);
+        }
+
+        private void SetEventPageCoordinatesInDB(ContentEventArgs e)
+        {
+            var page = e.Content as EventPage;
+            if (page != null)
+            {
+                if (page.Coordinates.IsNotNullOrEmpty())
+                {
+                    page.Latitude = double.Parse(page.Coordinates.Split(',')[0]);
+                    page.Longitude = double.Parse(page.Coordinates.Split(',')[1]);
+                }
+            }
         }
 
         private void OnPublishingContent(object sender, ContentEventArgs e)

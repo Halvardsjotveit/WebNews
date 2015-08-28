@@ -42,5 +42,11 @@ namespace WebNews.Models.Pages
                Order = 7)]
         public virtual ContentReference EventPerson { get; set; }
 
+        [ScaffoldColumn(false)]
+        public virtual double Latitude { get; set; }
+
+
+        [ScaffoldColumn(false)]
+        public virtual double Longitude { get; set; }
     }
 }
