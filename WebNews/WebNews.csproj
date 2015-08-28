@@ -169,8 +169,8 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NuGet.Core, Version=2.5.40416.9020, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -239,8 +239,10 @@
     <Compile Include="Business\Rendring\CustomViewEngine.cs" />
     <Compile Include="Business\UIDescriptors\FolderPageUIDescriptors.cs" />
     <Compile Include="Controllers\ArticlePageController.cs" />
+    <Compile Include="Controllers\EventPageController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ImageFileController.cs" />
+    <Compile Include="Controllers\JsonImportAdminPluginController.cs" />
     <Compile Include="Controllers\ListPageController.cs" />
     <Compile Include="Controllers\PersonPageController.cs" />
     <Compile Include="Controllers\PortalPageController.cs" />
@@ -258,22 +260,43 @@
     <Compile Include="Models\Pages\ArticlePage.cs" />
     <Compile Include="Models\Pages\BaseEditorialPage.cs" />
     <Compile Include="Models\Pages\BasePage.cs" />
+    <Compile Include="Models\Pages\EditorDescriptors\CoordinatesEditorDescriptor.cs" />
+    <Compile Include="Models\Pages\EventPage.cs" />
     <Compile Include="Models\Pages\FolderPage.cs" />
     <Compile Include="Models\Pages\HomePage.cs" />
     <Compile Include="Models\Pages\ListPage.cs" />
     <Compile Include="Models\Pages\PersonPage.cs" />
     <Compile Include="Models\Pages\PortalPage.cs" />
+    <Compile Include="Models\ViewModels\EventPageViewModel.cs" />
     <Compile Include="Models\ViewModels\IPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ListPageViewModel.cs" />
     <Compile Include="Models\ViewModels\ImageViewModel.cs" />
     <Compile Include="Models\ViewModels\PageViewModel.cs" />
+    <Compile Include="Plugins\Admin\JsonImportTool.aspx.cs">
+      <DependentUpon>JsonImportTool.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plugins\Admin\JsonImportTool.aspx.designer.cs">
+      <DependentUpon>JsonImportTool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\Admin\PageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Extensions\PageDataExtensions.cs" />
+    <Compile Include="Utils\Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Properties\" />
+    <Folder Include="Views\JsonImportAdminPlugin\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientResources\googlemaps\async.js" />
+    <Content Include="ClientResources\googlemaps\Editor.js" />
+    <Content Include="ClientResources\googlemaps\nls\Labels.js" />
+    <Content Include="ClientResources\googlemaps\nls\sv\Labels.js" />
+    <Content Include="ClientResources\googlemaps\WidgetTemplate.css" />
+    <Content Include="ClientResources\googlemaps\WidgetTemplate.html" />
+    <Content Include="Plugins\Admin\JsonImportTool.aspx" />
     <Content Include="Static\css\app.css" />
     <Content Include="Static\css\bootstrap-theme.css" />
     <Content Include="Static\css\bootstrap-theme.min.css" />
@@ -321,6 +344,8 @@
     <Content Include="Views\Shared\Partials\Footer.cshtml" />
     <Content Include="Views\Media\ImageFile.cshtml" />
     <Content Include="Views\Shared\Partials\BreadCrumbs.cshtml" />
+    <Content Include="Views\Pages\EventPage\index.cshtml" />
+    <Content Include="module.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

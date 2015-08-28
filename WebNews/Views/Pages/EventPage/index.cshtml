@@ -1,0 +1,63 @@
+﻿@using Castle.Core.Internal
+@using EPiServer.Core
+@using WebNews.Utils.Extensions
+@model WebNews.Models.ViewModels.EventPageViewModel
+@{ Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@Html.FullRefreshPropertiesMetaData()
+
+<p>
+    @Html.PropertyFor(x => x.CurrentPage.EventText)
+</p>
+
+<i>Event Start Time: </i>
+@*@Html.PropertyFor(x => x.CurrentPage.StartTime)*@
+@Model.StartTime
+<br />
+
+@if (Model.EndTime.IsNotNullOrEmpty())
+{
+    <i>Event End Time: </i>
+}
+@Model.EndTime
+<br />
+
+@if (@Model.CurrentPage.Coordinates.IsNotNullOrEmpty())
+{
+    <div id="map" style="height: 380px"></div>
+    <script type="text/javascript">
+
+        var map;
+
+        function initMap() {
+            var position = { lat: @Model.Lat, lng: @Model.Long };
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: position,
+                zoom: 12
+            });
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: 'Event Position'
+            });
+
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBI1NtFW2iYL7y_Fyx_cHRmPKvjGR78LE&callback=initMap">
+
+    </script>
+}
+
+<br/>
+
+    @if (Model.CurrentPage.EventPerson != null)
+    {
+        <h2>Event Contact Person:</h2>
+    }
+    <div @Html.EditAttributes(m => m.CurrentPage.EventPerson)>
+        <p>@Html.PropertyFor(x => x.CurrentPage.EventPerson)</p>
+        <p>@Model.PhoneNumber</p>
+        <p>@Model.Email</p>
+    </div>

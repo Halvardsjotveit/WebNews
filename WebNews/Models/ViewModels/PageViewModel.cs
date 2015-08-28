@@ -28,9 +28,14 @@ namespace WebNews.Models.ViewModels
         public bool IsPortalPageFooter { get; set; }
         public PortalPage PortalPageReference { get; set; }
 
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
         public PageViewModel(T currentPage)
         {
+
+
+
             ServiceLocator = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<IContentLoader>();
             CurrentPage = currentPage;
 

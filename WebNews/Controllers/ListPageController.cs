@@ -25,7 +25,5 @@ namespace WebNews.Controllers
 
             return View(model);
         }
-
-
     }
 }
