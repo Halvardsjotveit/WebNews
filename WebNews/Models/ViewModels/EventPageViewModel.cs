@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Castle.Core.Internal;
 using EPiServer;
 using WebNews.Models.Pages;
+using WebNews.Utils.Extensions;
 
 namespace WebNews.Models.ViewModels
 {
@@ -26,19 +27,13 @@ namespace WebNews.Models.ViewModels
                 Email = GetEmail(currentPage);
             }
 
-            Lat = GetPosition(currentPage, 0);
-            Long = GetPosition(currentPage, 1);
+            Lat = currentPage.PageLatitude;
+            Long = currentPage.PageLongitude;
 
-            StartTime = GetTimeString(currentPage.StartTime);
-            EndTime = GetTimeString(currentPage.EndTime);
+            StartTime = (currentPage.StartTime as DateTime?).FormatDateString();
+            EndTime = currentPage.EndTime.FormatDateString();
         }
-        private double GetPosition(EventPage currentPage, int i)
-        {
-            var cordString = currentPage.Coordinates;
-            if (cordString.IsNullOrEmpty())
-                return 0;
-            return double.Parse(currentPage.Coordinates.Split(',')[i]);
-        }
+
 
         private string GetTimeString(DateTime? dateTime)
         {

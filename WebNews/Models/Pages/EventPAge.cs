@@ -43,10 +43,10 @@ namespace WebNews.Models.Pages
         public virtual ContentReference EventPerson { get; set; }
 
         [ScaffoldColumn(false)]
-        public virtual double Latitude { get; set; }
+        public virtual double PageLatitude { get; set; }
 
 
         [ScaffoldColumn(false)]
-        public virtual double Longitude { get; set; }
+        public virtual double PageLongitude { get; set; }
     }
 }

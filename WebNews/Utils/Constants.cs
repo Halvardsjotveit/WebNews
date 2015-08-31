@@ -16,5 +16,10 @@ namespace WebNews.Utils
         {
             public const string JsonFileLocation = @"C:\dev\WebNews\Json Data\data.json";
         }
+
+        public static class AppSettingsNames
+        {
+            public const string GoogleMapsApiKeyName = "GoogleMapsApiKey";  
+        }
     }
 }

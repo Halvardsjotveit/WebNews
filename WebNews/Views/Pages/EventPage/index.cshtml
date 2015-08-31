@@ -1,5 +1,7 @@
-﻿@using Castle.Core.Internal
+﻿@using System.Web.Optimization
+@using Castle.Core.Internal
 @using EPiServer.Core
+@using WebNews.Utils
 @using WebNews.Utils.Extensions
 @model WebNews.Models.ViewModels.EventPageViewModel
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
@@ -25,8 +27,12 @@
 </section>
 @if (@Model.CurrentPage.Coordinates.IsNotNullOrEmpty())
 {
-    <div id="map" style="height: 300px; width: 500px; margin: 0 auto"></div>
-    <script type="text/javascript">
+    <div id="map" data-lng="@Model.Long" data-lat="@Model.Lat" style="height: 300px; width: 500px; margin: 0 auto"></div>
+
+    @Scripts.Render("~/bundle/Home/Index-scripts")
+
+
+    @*<script type="text/javascript">
 
         var map;
 
@@ -44,11 +50,12 @@
 
         }
 
-    </script>
+    </script>*@
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBI1NtFW2iYL7y_Fyx_cHRmPKvjGR78LE&callback=initMap">
+            src=@string.Format("https://maps.googleapis.com/maps/api/js?key={0}&callback=initMap", Settings.GoogleMapsApiKey )>
 
     </script>
+    
 }
 <section>
     <br />

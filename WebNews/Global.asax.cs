@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using EPiServer;
 using EPiServer.Core;
+using EPiServer.DataAccess;
+using EPiServer.Web.WebControls;
+using WebNews.App_Start;
 using WebNews.Business.Rendring;
 using WebNews.Models.Pages;
 using WebNews.Utils.Extensions;
@@ -14,9 +18,11 @@ namespace WebNews
         {
             AreaRegistration.RegisterAllAreas();
             ViewEngines.Engines.Add(new CustomViewEngine());
+            BundleTable.EnableOptimizations = true;
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DataFactory.Instance.PublishedContent += OnPublishedContent;
-            //DataFactory.Instance.PublishingContent += OnPublishedContent;
+            DataFactory.Instance.PublishingContent += OnPublishingContent;
             //DataFactory.Instance.SavedContent += OnSavedContent;
             //DataFactory.Instance.SavingContent += OnSavingContent;
             //DataFactory.Instance.CreatingContent += OnCreatingContent;
@@ -48,26 +54,30 @@ namespace WebNews
 
         private void OnPublishedContent(object sender, ContentEventArgs e)
         {
-            SetEventPageCoordinatesInDB(e);
+
             LogInfo("PublishedContent", e);
         }
 
         private void SetEventPageCoordinatesInDB(ContentEventArgs e)
         {
-            var page = e.Content as EventPage;
+            var originalPage = DataFactory.Instance.GetPage(e.ContentLink.ToPageReference());
+            var page = originalPage.CreateWritableClone() as EventPage;
+
             if (page != null)
             {
                 if (page.Coordinates.IsNotNullOrEmpty())
                 {
-                    page.Latitude = double.Parse(page.Coordinates.Split(',')[0]);
-                    page.Longitude = double.Parse(page.Coordinates.Split(',')[1]);
+
+                    page.PageLatitude = double.Parse(page.Coordinates.Split(',')[0]);
+                    page.PageLongitude = double.Parse(page.Coordinates.Split(',')[1]);
                 }
+                DataFactory.Instance.Save(page, SaveAction.Save);
             }
         }
 
         private void OnPublishingContent(object sender, ContentEventArgs e)
         {
-
+            SetEventPageCoordinatesInDB(e);
             LogInfo("PublishingContent", e);
         }
 

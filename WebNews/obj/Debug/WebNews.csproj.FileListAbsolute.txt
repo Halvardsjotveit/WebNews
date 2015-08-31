@@ -72,3 +72,8 @@ C:\dev\WebNews\WebNews\bin\System.Web.WebPages.Razor.xml
 C:\dev\WebNews\WebNews\obj\Debug\WebNews.csprojResolveAssemblyReference.cache
 C:\dev\WebNews\WebNews\obj\Debug\WebNews.dll
 C:\dev\WebNews\WebNews\obj\Debug\WebNews.pdb
+C:\dev\WebNews\WebNews\bin\Antlr3.Runtime.dll
+C:\dev\WebNews\WebNews\bin\System.Web.Optimization.dll
+C:\dev\WebNews\WebNews\bin\WebGrease.dll
+C:\dev\WebNews\WebNews\bin\Antlr3.Runtime.pdb
+C:\dev\WebNews\WebNews\bin\System.Web.Optimization.xml
