@@ -303,7 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Properties\" />
-    <Folder Include="Views\JsonImportAdminPlugin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\googlemaps\async.js" />
